@@ -13,8 +13,13 @@ namespace StorageDownloader
 
         public const string FTPusername = "fz223free";
         public const string FTPpassword = "fz223free";
-
-        string FTP_StorageWithCredentials = "ftp://fz223free:fz223free@ftp.zakupki.gov.ru";
+        //public string dataBusSuf = "0000000001";
+        //string dataBus = "out/" + dataBusSuf;
+        public string GetDataBus(string suf)
+        {
+            return "/out/" + suf;
+        }
+        //string FTP_StorageWithCredentials = "ftp://fz223free:fz223free@ftp.zakupki.gov.ru";
 
         public void FindFiles(DateTime start, DateTime end)
         {
@@ -23,60 +28,108 @@ namespace StorageDownloader
         public void DownloadFiles()
         {
         }
+        public List<string> GetDataBuses()
+        {
+            return new List<string>() {
+                "0000000001/",
+                "0000000002/",
+                "0000000003/",
+                "0000000004/",
+                "0000000005/",
+                "0000000006/",
+                "0000000007/",
+                "0000000008/",
+                "0000000009/",
+                "0000000010/",
+                "0000000011/",
+                "0000000012/",
+                "0000000013/",
+                "0000000014/",
+                "0000000015/",
+                "0000000016/",
+                "0000000017/",
+                "0000000018/",
+                "0000000019/",
+                "0000000020/",
+                "0000000021/",
+                "0000000022/",
+                "0000000023/",
+                "0000000024/",
+                "0000000025/",
+                "0000000026/",
+                "0000000027/",
+                "0000000028/",
+                "0000000029/",
+                "0000000030/",
+                "0000000031/",
+                "0000000032/",
+                "0000000033/",
+                "0000000034/"
+            };
+        }
         public void StartObserving()
         {
+            CreateDirectories();
+
             string ftphost = "ftp.zakupki.gov.ru";
-            string dataBus = "out/0000000001";
 
-            List<string> files = getfiles(ftphost, dataBus, "zip");
-
-            foreach (string shortname in files)
+            List<string> dtbs = GetDataBuses();
+            foreach (string dataBus in dtbs)
             {
-                try
+                List<string> files = getfiles(ftphost, GetDataBus(dataBus), "zip");
+
+                foreach (string shortname in files)
                 {
-                    DownloadFileFTP(shortname);
-                }
-                catch {
+                    try
+                    {
+                        DownloadFileFTP(shortname, GetDataBus(dataBus));
+                    }
+                    catch
+                    {
+                    }
                 }
             }
         }
 
-        private string GetCreateFilePath(string shortName)
+        private string GetCreateFilePath(string shortName, string dataBus)
         {
-            return @"D:\xmlStorage\temp\" + shortName;
+            //"/out/0000000001/"
+            //return @"D:\xmlStorage\temp\" + shortName;
+            return @"D:\xmlStorage" + dataBus.Replace(@"/",@"\") + shortName;
         }
-        private string GetFtpFullPath(string shortName)
+        private string GetFtpFullPath(string shortName, string dataBus)
         {
-            string dataBus = "/out/0000000001/";
             return "ftp://ftp.zakupki.gov.ru" + dataBus + shortName;
         }
-
-        //private void DownloadFileFTP(string shortName)
-        //{
-        //    string ftpfullpath = GetFtpFullPath(shortName);
-        //    string createfilepath = GetCreateFilePath(shortName);
-
-        //    using (WebClient request = new WebClient())
-        //    {
-        //        request.Credentials = new NetworkCredential(FTPusername, FTPpassword);
-        //        byte[] fileData = request.DownloadData(ftpfullpath);
-        //        if (fileData.Length > 222)
-        //        {
-        //            using (FileStream file = File.Create(createfilepath))
-        //            {
-        //                file.Write(fileData, 0, fileData.Length);
-        //                file.Close();
-        //            }
-        //        }
-        //    }
-        //}
-
-        private void DownloadFileFTP(string shortName)
+        private void CreateIfNeed(string path)
         {
-            string ftpfullpath = GetFtpFullPath(shortName);
-            string createfilepath = GetCreateFilePath(shortName);
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+        }
 
-            // Get the object used to communicate with the server.
+        public void CreateDirectories()
+        {
+            string rootPath = @"D:\xmlStorage\";
+            string outPath = rootPath + "out";
+            string logsPath = rootPath + "logs";
+            string extractPath = rootPath + "extract";
+
+            CreateIfNeed(rootPath);
+            CreateIfNeed(outPath);
+            CreateIfNeed(logsPath);
+            CreateIfNeed(extractPath);
+            List<string> dataBuses = GetDataBuses();
+
+            foreach (string dataBuse in dataBuses)
+            {
+                CreateIfNeed(outPath + @"\" + dataBuse);
+            }
+        }
+        private void DownloadFileFTP(string shortName, string dataBus)
+        {
+            string ftpfullpath = GetFtpFullPath(shortName, dataBus);
+            string createfilepath = GetCreateFilePath(shortName, dataBus);
+
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpfullpath);
             request.Method = WebRequestMethods.Ftp.DownloadFile;
 
@@ -87,7 +140,9 @@ namespace StorageDownloader
             Stream responseStream = response.GetResponseStream();
             StreamReader reader = new StreamReader(responseStream);
 
-            if(response.ContentLength > 222)
+            if (CanDownloadFile(ftpfullpath))
+            {
+
                 using (FileStream writer = new FileStream(createfilepath, FileMode.Create))
                 {
 
@@ -103,9 +158,23 @@ namespace StorageDownloader
                         readCount = responseStream.Read(buffer, 0, bufferSize);
                     }
                 }
+            }
 
             reader.Close();
             response.Close();
+        }
+        public bool CanDownloadFile(string ftpfullpath)
+        {
+            const int MinValidFileSize = 224;
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(ftpfullpath);
+            request.Proxy = null;
+            request.Credentials = new NetworkCredential(FTPusername, FTPpassword);
+            request.Method = WebRequestMethods.Ftp.GetFileSize;
+
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            long size = response.ContentLength;
+            response.Close();
+            return size > MinValidFileSize;
         }
         public List<string> getfiles(string FTPhostname, string dataBus, string extension)
         {
@@ -132,7 +201,10 @@ namespace StorageDownloader
                     line = streamReader.ReadLine();
                     if (line != null)
                     {
-                        line = line.Replace("0000000001/", string.Empty);
+                        //string dataBus = "out/0000000001";
+                        //GetDataBus().Replace()
+                        //dataBus.Replace("out/", string.Empty)
+                        line = line.Replace(dataBus.Replace("out/", string.Empty) + "/", string.Empty);
                         results.Add(line);
                     }
                 }
