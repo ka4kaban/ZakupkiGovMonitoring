@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using ParseXmlProj;
 
 namespace ZakupkiGovMonitoring
 {
@@ -14,6 +15,7 @@ namespace ZakupkiGovMonitoring
     {
         public static void Main(string[] args)
         {
+            //DirtyContext db = new DirtyContext();
             BuildWebHost(args).Run();
         }
 

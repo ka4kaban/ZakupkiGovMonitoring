@@ -28,10 +28,10 @@ namespace ParseXmlProj
             //string pathRej = @"D:\xmlStorage\0000000001_purchaseRejection_20140423_000000_001\0000000001_purchaseRejection_20140423_000000_001.xml";
             //Xml2CSharp5.PurchaseRejection resREj = Out1.ParseXML<Xml2CSharp5.PurchaseRejection>(pathRej);
 
-            //ParseAllXML();
+            ParseAllXML();
 
-            Archiver.UnzipAllFiles();
-            
+            //Archiver.UnzipAllFiles();
+
             //using (var db = new DirtyContext()) {
             //    db.OrderClauses.Add(new OrderClause());
             //    db.SaveChanges();
@@ -78,8 +78,9 @@ namespace ParseXmlProj
                 result = typeof(PurchaseProtocol);
             else if (filName.Contains("purchaseContract"))
                 result = typeof(PurchaseContract);
-            else
+            else {
                 Logger.Log("class name for " + filName + " is not exists", Logger.LogType.Err);
+            }
 
             return result;
         }
@@ -88,43 +89,44 @@ namespace ParseXmlProj
         {
             List<string> result = new List<string>();
             DirectoryInfo root = new DirectoryInfo(extractFolder);
-            DirectoryInfo[] dirs = root.GetDirectories();
+            DirectoryInfo[] busDirs = root.GetDirectories();
 
             using (var db = new DirtyContext())
             {
 
-                foreach (DirectoryInfo dir in dirs)
+                foreach (DirectoryInfo busDir in busDirs)
                 {
-                    FileInfo[] files = dir.GetFiles("*.xml");
+                    DirectoryInfo[] dirs = busDir.GetDirectories();
 
-                    foreach (FileInfo file in files)
+                    foreach (DirectoryInfo dir in dirs)
                     {
-                        Type t = GetClassByFileName(file.Name);
-                        if (t == typeof(OrderClause))
+                        FileInfo[] files = dir.GetFiles("*.xml");
+
+                        foreach (FileInfo file in files)
                         {
-                            OrderClause resREj = Out1.ParseXML<OrderClause>(file.FullName);
-                            //Xml2CSharp.OrderClause resREj = Out1.ParseXML<Xml2CSharp.OrderClause>(file.FullName);
-                            db.OrderClauses.Add(resREj);
-                            //db.OrderClauses.Add(new OrderClause());
+                            Type t = GetClassByFileName(file.Name);
+                            if (t == typeof(PurchaseContract))
+                            {
+                                try {
+                                    PurchaseContract resREj = Out1.ParseXML<PurchaseContract>(file.FullName);
+                                    db.PurchaseContracts.Add(resREj);
+                                }
+                                catch {
+                                }
+                            }
+
+                            //db.OrderClauses.a
+                            //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
                         }
-                        //else 
-                        //if (t == typeof(PurchaseNotice))
-                        //{
-                        //    var resREj = Out1.ParseXML<PurchaseNotice>(file.FullName);
-                        //    //db.PurchaseNotices.Add(resREj);
-                        //}
-
-
-                        //db.OrderClauses.a
-                        //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
                     }
+                    break;
                 }
                 db.SaveChanges();
             }
         }
 
-        
 
-       
+
+
     }
 }

@@ -48,6 +48,8 @@ export const actionCreators = {
             let fetchTask = fetch(`api/SampleData/WeatherForecasts?startDateIndex=${ startDateIndex }`)
                 .then(response => response.json() as Promise<WeatherForecast[]>)
                 .then(data => {
+                    debugger;
+
                     dispatch({ type: 'RECEIVE_WEATHER_FORECASTS', startDateIndex: startDateIndex, forecasts: data });
                 });
 

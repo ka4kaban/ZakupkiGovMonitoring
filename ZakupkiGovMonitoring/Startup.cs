@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ZakupkiGovMonitoring.Models;
 
 namespace ZakupkiGovMonitoring
 {
@@ -23,6 +25,9 @@ namespace ZakupkiGovMonitoring
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<ZakupkiGovMonitoringContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ZakupkiGovMonitoringContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using ParseXmlProj;
 
 namespace ZakupkiGovMonitoring.Controllers
 {
@@ -25,6 +26,12 @@ namespace ZakupkiGovMonitoring.Controllers
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
         }
+
+        //[HttpGet("[action]")]
+        //public PurchaseContractData PurchaseContract(int regNum)
+        //{
+            
+        //}
 
         public class WeatherForecast
         {
