@@ -41,7 +41,22 @@ type ContractsProps =
             //    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
             //</div>
 
+//Номер контракта: 4770238802718000075 registrationNumber / purchaseRegNum
+//Сумма контракта: 61 198 300 000 RUB currency / sum
+//Регион: Москва
+//Способ размещения заказа: Закупка у единственного поставщика(подрядчика, исполнителя) Explanation.purchaseMethodName / purchaseMethodCode
 
+//Дата заключения контракта: 2018 - 07 - 26 ContractCreateDate
+//Дата публикации: 2018 - 11 - 23 CreateDateTime publicationDateTime
+//Срок исполнения контракта: -
+//    Федеральный закон: 44 - ФЗ
+//Ссылка на zakupki.gov.ru:
+//Сведения о контракте
+
+//Печатная форма сведений
+
+//Ссылка на.json файл контракта: Перейти
+//Количество поставщиков: 2 Показать
 
 //export default
     class Contract extends React.Component<ContractsProps, {}> {
@@ -85,22 +100,7 @@ type ContractsProps =
             <button type="button" className="btn btn-light">Light</button>
             <button type="button" className="btn btn-dark">Dark</button>
 
-            Номер контракта: 4770238802718000075 registrationNumber / purchaseRegNum
-                    Сумма контракта: 61 198 300 000 RUB currency/sum
-                    Регион: Москва
-            Способ размещения заказа: Закупка у единственного поставщика(подрядчика, исполнителя) Explanation.purchaseMethodName/purchaseMethodCode
-
-                Дата заключения контракта: 2018 - 07 - 26 ContractCreateDate
-                Дата публикации: 2018 - 11 - 23 CreateDateTime publicationDateTime
-                Срок исполнения контракта: -
-                    Федеральный закон: 44 - ФЗ
-                Ссылка на zakupki.gov.ru:
-                Сведения о контракте
-
-                Печатная форма сведений
-
-                Ссылка на.json файл контракта: Перейти
-                Количество поставщиков: 2 Показать
+           
 
             </div>;
     }

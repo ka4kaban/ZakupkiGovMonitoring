@@ -25,7 +25,9 @@ namespace ZakupkiGovMonitoring.Controllers
         [HttpGet]
         public IEnumerable<PurchaseContractData> GetPurchaseContractData()
         {
-            return _context.PurchaseContractData;
+            IEnumerable<PurchaseContractData> res = _context.PurchaseContractData.Where(t => t.Id < 20);
+            PurchaseContractData tets = _context.PurchaseContractData.Where(t => t.Id == 1).FirstOrDefault();
+            return res;
         }
 
         // GET: api/PurchaseContractDatas/5

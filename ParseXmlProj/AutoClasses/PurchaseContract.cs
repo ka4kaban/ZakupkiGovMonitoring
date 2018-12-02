@@ -92,28 +92,28 @@ namespace ParseXmlProj
         public string CreateDateTime { get; set; }
         [XmlElement(ElementName = "contractCreateDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string ContractCreateDate { get; set; }
-        [XmlElement(ElementName = "lot", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Lot Lot { get; set; }
-        [XmlElement(ElementName = "currency", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Currency Currency { get; set; }
+        //[XmlElement(ElementName = "lot", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public Lot Lot { get; set; }
+        //[XmlElement(ElementName = "currency", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public Currency Currency { get; set; }
         [XmlElement(ElementName = "sum", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string Sum { get; set; }
         [XmlElement(ElementName = "fulfillmentDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string FulfillmentDate { get; set; }
-        [XmlElement(ElementName = "purchaseInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public PurchaseInfo PurchaseInfo { get; set; }
-        [XmlElement(ElementName = "placer", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Placer Placer { get; set; }
-        [XmlElement(ElementName = "customerInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public CustomerInfo CustomerInfo { get; set; }
-        [XmlElement(ElementName = "supplier", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Supplier Supplier { get; set; }
-        [XmlElement(ElementName = "deliveryPlace", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public DeliveryPlace DeliveryPlace { get; set; }
-        [XmlElement(ElementName = "deliveryPlaceIndication", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string DeliveryPlaceIndication { get; set; }
-        [XmlElement(ElementName = "contractItems", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public ContractItems ContractItems { get; set; }
+        //[XmlElement(ElementName = "purchaseInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public PurchaseInfo PurchaseInfo { get; set; }
+        //[XmlElement(ElementName = "placer", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public Placer Placer { get; set; }
+        //[XmlElement(ElementName = "customerInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public CustomerInfo CustomerInfo { get; set; }
+        //[XmlElement(ElementName = "supplier", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public Supplier Supplier { get; set; }
+        //[XmlElement(ElementName = "deliveryPlace", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public DeliveryPlace DeliveryPlace { get; set; }
+        //[XmlElement(ElementName = "deliveryPlaceIndication", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public string DeliveryPlaceIndication { get; set; }
+        //[XmlElement(ElementName = "contractItems", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        //public ContractItems ContractItems { get; set; }
         [XmlElement(ElementName = "type", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string Type { get; set; }
         [XmlElement(ElementName = "name", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]

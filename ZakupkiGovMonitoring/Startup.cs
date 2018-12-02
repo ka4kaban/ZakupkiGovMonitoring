@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using ZakupkiGovMonitoring.Models;
+using ParseXmlProj;
 
 namespace ZakupkiGovMonitoring
 {
@@ -26,8 +27,11 @@ namespace ZakupkiGovMonitoring
         {
             services.AddMvc();
 
+
             services.AddDbContext<ZakupkiGovMonitoringContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ZakupkiGovMonitoringContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("DirtyContext")));
+            //services.AddDbContext<ZakupkiGovMonitoringContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("ZakupkiGovMonitoringContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
