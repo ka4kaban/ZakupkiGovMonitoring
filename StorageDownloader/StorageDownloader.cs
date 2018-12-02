@@ -31,13 +31,14 @@ namespace StorageDownloader
         public List<string> GetDataBuses()
         {
             return new List<string>() {
-                "0000000001/",
-                "0000000002/",
-                "0000000003/",
-                "0000000004/",
-                "0000000005/",
-                "0000000006/",
-                "0000000007/",
+                //"0000000001/",
+                //"0000000002/",
+                //"0000000003/",
+                //"0000000004/",
+                //"0000000005/",
+                //"0000000006/",
+                //"0000000007/",
+
                 "0000000008/",
                 "0000000009/",
                 "0000000010/",
@@ -123,6 +124,10 @@ namespace StorageDownloader
             foreach (string dataBuse in dataBuses)
             {
                 CreateIfNeed(outPath + @"\" + dataBuse);
+            }
+            foreach (string dataBuse in dataBuses)
+            {
+                CreateIfNeed(extractPath + @"\" + dataBuse);
             }
         }
         private void DownloadFileFTP(string shortName, string dataBus)

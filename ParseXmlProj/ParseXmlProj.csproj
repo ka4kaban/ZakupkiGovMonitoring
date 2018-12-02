@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Archiver.cs" />
     <Compile Include="AutoClasses\ExplanationAuto.cs" />
     <Compile Include="AutoClasses\ItemsBase.cs" />
     <Compile Include="AutoClasses\OrderClause.cs" />

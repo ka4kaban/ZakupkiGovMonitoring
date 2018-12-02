@@ -13,7 +13,6 @@ namespace ParseXmlProj
 {
     class Program
     {
-        public const string zipsFolder = @"D:\xmlStorage\temp\";
         public const string extractFolder = @"D:\xmlStorage\extract\";
         static void Main(string[] args)
         {
@@ -28,8 +27,11 @@ namespace ParseXmlProj
 
             //string pathRej = @"D:\xmlStorage\0000000001_purchaseRejection_20140423_000000_001\0000000001_purchaseRejection_20140423_000000_001.xml";
             //Xml2CSharp5.PurchaseRejection resREj = Out1.ParseXML<Xml2CSharp5.PurchaseRejection>(pathRej);
-            ParseAllXML();
 
+            //ParseAllXML();
+
+            Archiver.UnzipAllFiles();
+            
             //using (var db = new DirtyContext()) {
             //    db.OrderClauses.Add(new OrderClause());
             //    db.SaveChanges();
@@ -121,43 +123,8 @@ namespace ParseXmlProj
             }
         }
 
-        public static void UnzipAllFiles()
-        {
-            List<string> zipFiles = GetFileNames(zipsFolder, "*.zip");
+        
 
-            foreach (string zipFile in zipFiles)
-            {
-                try
-                {
-                    UnzipFile(zipFile);
-                }
-                catch
-                {
-                }
-            }
-        }
-        static void UnzipFile(string zipName)
-        {
-            string unzipFolder = extractFolder + zipName.Replace(".xml", string.Empty).Replace(".zip", string.Empty);
-            bool exists = Directory.Exists(unzipFolder);
-            if (!exists)
-                Directory.CreateDirectory(unzipFolder);
-
-            ZipFile.ExtractToDirectory(zipsFolder + zipName, unzipFolder);
-        }
-
-        static List<string> GetFileNames(string folder, string searchPattern)
-        {
-            List<string> result = new List<string>();
-            DirectoryInfo d = new DirectoryInfo(folder);
-            FileInfo[] Files = d.GetFiles(searchPattern);
-
-            foreach (FileInfo file in Files)
-            {
-                result.Add(file.Name);
-            }
-
-            return result;
-        }
+       
     }
 }
