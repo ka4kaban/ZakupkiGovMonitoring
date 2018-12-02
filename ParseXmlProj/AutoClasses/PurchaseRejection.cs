@@ -1,30 +1,13 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-/* 
- Licensed under the Apache License, Version 2.0
-
- http://www.apache.org/licenses/LICENSE-2.0
- */
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-   
 
-    
-  
-    
-   
-    [XmlRoot(ElementName = "purchaseProtocolRZAEData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolRZAEData
+
+
+    [XmlRoot(ElementName = "purchaseRejectionData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseRejectionData
     {
         [Key]
         public int Id { get; set; }
@@ -34,37 +17,33 @@ namespace ParseXmlProj
         public string CreateDateTime { get; set; }
         [XmlElement(ElementName = "urlOOS", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string UrlOOS { get; set; }
-        [XmlElement(ElementName = "purchaseInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public PurchaseInfo PurchaseInfo { get; set; }
-        [XmlElement(ElementName = "registrationNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string RegistrationNumber { get; set; }
-        [XmlElement(ElementName = "placer", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Placer Placer { get; set; }
-        [XmlElement(ElementName = "customer", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Customer Customer { get; set; }
+        [XmlElement(ElementName = "cancelNoticeRegistrationNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string CancelNoticeRegistrationNumber { get; set; }
+        [XmlElement(ElementName = "name", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string Name { get; set; }
+        [XmlElement(ElementName = "purchaseMethodCode", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string PurchaseMethodCode { get; set; }
+        [XmlElement(ElementName = "purchaseCodeName", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string PurchaseCodeName { get; set; }
         [XmlElement(ElementName = "publicationDateTime", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string PublicationDateTime { get; set; }
-        [XmlElement(ElementName = "status", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string Status { get; set; }
-        [XmlElement(ElementName = "version", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string Version { get; set; }
+        [XmlElement(ElementName = "rejectionDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string RejectionDate { get; set; }
+        [XmlElement(ElementName = "causeForRejection", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string CauseForRejection { get; set; }
+        [XmlElement(ElementName = "placer", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public Placer Placer { get; set; }
         [XmlElement(ElementName = "attachments", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public Attachments Attachments { get; set; }
-        [XmlElement(ElementName = "procedureDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string ProcedureDate { get; set; }
-        [XmlElement(ElementName = "procedurePlace", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string ProcedurePlace { get; set; }
-        [XmlElement(ElementName = "lotApplicationsList", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public LotApplicationsList LotApplicationsList { get; set; }
-        [XmlElement(ElementName = "protocolSignDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string ProtocolSignDate { get; set; }
     }
 
-    
-   
-    [XmlRoot(ElementName = "purchaseProtocolRZAE", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolRZAE
+
+
+    [XmlRoot(ElementName = "purchaseRejection", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseRejection
     {
+        [Key]
+        public int Id { get; set; }
         [XmlElement(ElementName = "header", Namespace = "http://zakupki.gov.ru/223fz/types/1")]
         public Header Header { get; set; }
         [XmlElement(ElementName = "body", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]

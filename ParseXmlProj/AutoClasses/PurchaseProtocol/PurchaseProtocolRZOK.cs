@@ -1,47 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//namespace ParseXmlProj.AutoClasses
-//{
-//    class PurchaseProtocolPAAEAuto
-//    {
-//    }
-//}
-
-   /* 
-    Licensed under the Apache License, Version 2.0
-    
-    http://www.apache.org/licenses/LICENSE-2.0
-    */
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-  
-    [XmlRoot(ElementName = "lotParameters", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class LotParameters
-    {
-        [Key]
-        public int Id { get; set; }
-        [XmlElement(ElementName = "nonPrice", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string NonPrice { get; set; }
-        [XmlElement(ElementName = "currency", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public Currency Currency { get; set; }
-    }
-
-   
-
-    
-    
-
-    [XmlRoot(ElementName = "purchaseProtocolPAAEData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolPAAEData
+    [XmlRoot(ElementName = "purchaseProtocolRZOKData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseProtocolRZOKData
     {
         [Key]
         public int Id { get; set; }
@@ -71,22 +34,22 @@ namespace ParseXmlProj
         public Attachments Attachments { get; set; }
         [XmlElement(ElementName = "procedureDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string ProcedureDate { get; set; }
-        [XmlElement(ElementName = "protocolRZRegistrationNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string ProtocolRZRegistrationNumber { get; set; }
-        [XmlElement(ElementName = "protocolRZVersion", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-        public string ProtocolRZVersion { get; set; }
+        [XmlElement(ElementName = "procedurePlace", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProcedurePlace { get; set; }
+        [XmlElement(ElementName = "protocolVKRegistrationNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProtocolVKRegistrationNumber { get; set; }
+        [XmlElement(ElementName = "protocolVKVersion", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProtocolVKVersion { get; set; }
         [XmlElement(ElementName = "lotApplicationsList", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public LotApplicationsList LotApplicationsList { get; set; }
+        [XmlElement(ElementName = "protocolSignDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProtocolSignDate { get; set; }
     }
 
- 
 
-   
-    [XmlRoot(ElementName = "purchaseProtocolPAAE", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolPAAE
+    [XmlRoot(ElementName = "purchaseProtocolRZOK", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseProtocolRZOK
     {
-        [Key]
-        public int Id { get; set; }
         [XmlElement(ElementName = "header", Namespace = "http://zakupki.gov.ru/223fz/types/1")]
         public Header Header { get; set; }
         [XmlElement(ElementName = "body", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
@@ -103,8 +66,6 @@ namespace ParseXmlProj
         public string Ns7 { get; set; }
         [XmlAttribute(AttributeName = "ns8", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns8 { get; set; }
-        [XmlAttribute(AttributeName = "ns9", Namespace = "http://www.w3.org/2000/xmlns/")]
-        public string Ns9 { get; set; }
         [XmlAttribute(AttributeName = "ns2", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns2 { get; set; }
         [XmlAttribute(AttributeName = "xsi", Namespace = "http://www.w3.org/2000/xmlns/")]
@@ -114,5 +75,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }

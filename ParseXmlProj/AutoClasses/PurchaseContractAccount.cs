@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-  
+
 
     [XmlRoot(ElementName = "purchaseContractAccountData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class PurchaseContractAccountData
@@ -50,8 +42,6 @@ namespace ParseXmlProj
         public string Attachments { get; set; }
     }
 
-   
-
     [XmlRoot(ElementName = "purchaseContractAccount", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class PurchaseContractAccount
     {
@@ -86,4 +76,3 @@ namespace ParseXmlProj
     }
 
 }
-

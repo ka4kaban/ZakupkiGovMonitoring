@@ -1,35 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//namespace ParseXmlProj.AutoClasses
-//{
-//    class PurchaseProtocolVKAuto
-//    {
-//    }
-//}
-
-
-
-/* 
-Licensed under the Apache License, Version 2.0
-
-http://www.apache.org/licenses/LICENSE-2.0
-*/
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
- 
-   
-    
-
-    
     [XmlRoot(ElementName = "protocolVKLotApplications", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class ProtocolVKLotApplications
     {
@@ -41,7 +14,7 @@ namespace ParseXmlProj
         public Application Application { get; set; }
     }
 
-  
+
     [XmlRoot(ElementName = "purchaseProtocolVKData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class PurchaseProtocolVKData
     {
@@ -83,8 +56,6 @@ namespace ParseXmlProj
         public string ProtocolSignDate { get; set; }
     }
 
-    
-
 
     [XmlRoot(ElementName = "purchaseProtocolVK", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class PurchaseProtocolVK
@@ -118,5 +89,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }

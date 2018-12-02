@@ -1,35 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-//namespace ParseXmlProj.AutoClasses
-//{
-//    class PurchasePlanAuto
-//    {
-//    }
-//}
-
-/* 
-Licensed under the Apache License, Version 2.0
-
-http://www.apache.org/licenses/LICENSE-2.0
-*/
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-  
-
-  
-  
-
- 
-
     [XmlRoot(ElementName = "purchasePlanData", Namespace = "http://zakupki.gov.ru/223fz/purchasePlan/1")]
     public class PurchasePlanData
     {
@@ -75,10 +48,6 @@ namespace ParseXmlProj
         public Attachments Attachments { get; set; }
     }
 
-    
-
-  
-
     [XmlRoot(ElementName = "purchasePlan", Namespace = "http://zakupki.gov.ru/223fz/purchasePlan/1")]
     public class PurchasePlan
     {
@@ -111,4 +80,3 @@ namespace ParseXmlProj
     }
 
 }
-

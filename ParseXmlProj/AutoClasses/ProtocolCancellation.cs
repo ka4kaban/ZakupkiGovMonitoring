@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-  
-
-   
     [XmlRoot(ElementName = "protocolInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class ProtocolInfo
     {
@@ -58,7 +46,7 @@ namespace ParseXmlProj
         public Attachments Attachments { get; set; }
     }
 
-    
+
     [XmlRoot(ElementName = "protocolCancellation", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class ProtocolCancellation
     {
@@ -91,7 +79,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }
-
-

@@ -1,21 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-
-
-    [XmlRoot(ElementName = "purchaseProtocolZKData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolZKData
+    [XmlRoot(ElementName = "purchaseProtocolOSZData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseProtocolOSZData
     {
         [Key]
         public int Id { get; set; }
@@ -45,18 +34,23 @@ namespace ParseXmlProj
         public string ProcedureDate { get; set; }
         [XmlElement(ElementName = "procedurePlace", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string ProcedurePlace { get; set; }
+        [XmlElement(ElementName = "commissionNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string CommissionNumber { get; set; }
+        [XmlElement(ElementName = "commissionResult", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string CommissionResult { get; set; }
+        [XmlElement(ElementName = "protocolRZRegistrationNumber", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProtocolRZRegistrationNumber { get; set; }
+        [XmlElement(ElementName = "protocolRZVersion", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+        public string ProtocolRZVersion { get; set; }
         [XmlElement(ElementName = "lotApplicationsList", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public LotApplicationsList LotApplicationsList { get; set; }
         [XmlElement(ElementName = "protocolSignDate", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
         public string ProtocolSignDate { get; set; }
     }
 
-    
 
-  
-
-    [XmlRoot(ElementName = "purchaseProtocolZK", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
-    public class PurchaseProtocolZK
+    [XmlRoot(ElementName = "purchaseProtocolOSZ", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
+    public class PurchaseProtocolOSZ
     {
         [Key]
         public int Id { get; set; }
@@ -87,5 +81,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }

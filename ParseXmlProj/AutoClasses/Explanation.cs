@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-      
-
-
-
     [XmlRoot(ElementName = "explanationData", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class ExplanationData
     {
@@ -54,10 +42,6 @@ namespace ParseXmlProj
         public Placer Placer { get; set; }
     }
 
-   
-
-   
-
     [XmlRoot(ElementName = "explanation", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class Explanation
     {
@@ -90,4 +74,3 @@ namespace ParseXmlProj
     }
 
 }
-

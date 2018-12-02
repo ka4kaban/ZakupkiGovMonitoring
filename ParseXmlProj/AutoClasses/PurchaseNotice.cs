@@ -1,27 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-/* 
- Licensed under the Apache License, Version 2.0
-
- http://www.apache.org/licenses/LICENSE-2.0
- */
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-  
-   
-
-   
-
     [XmlRoot(ElementName = "organization", Namespace = "http://zakupki.gov.ru/223fz/types/1")]
     public class Organization
     {
@@ -61,9 +42,6 @@ namespace ParseXmlProj
         public string Procedure { get; set; }
     }
 
-   
-
- 
 
     [XmlRoot(ElementName = "electronicPlaceInfo", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class ElectronicPlaceInfo
@@ -84,9 +62,6 @@ namespace ParseXmlProj
         public string ExaminationDateTime { get; set; }
     }
 
-  
-
-   
 
     [XmlRoot(ElementName = "lotItem", Namespace = "http://zakupki.gov.ru/223fz/types/1")]
     public class LotItem
@@ -116,7 +91,6 @@ namespace ParseXmlProj
         public LotItem LotItem { get; set; }
     }
 
-   
 
     [XmlRoot(ElementName = "lots", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class Lots
@@ -177,7 +151,6 @@ namespace ParseXmlProj
     }
 
 
-
     [XmlRoot(ElementName = "purchaseNotice", Namespace = "http://zakupki.gov.ru/223fz/purchase/1")]
     public class PurchaseNotice
     {
@@ -208,5 +181,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }

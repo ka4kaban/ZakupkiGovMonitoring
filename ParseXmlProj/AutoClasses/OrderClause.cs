@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Xml.Serialization;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace ParseXmlProj
 {
-
-
     [XmlRoot(ElementName = "headAgency", Namespace = "http://zakupki.gov.ru/223fz/orderClauseList/1")]
     public class HeadAgency
     {
@@ -21,8 +11,7 @@ namespace ParseXmlProj
         [XmlElement(ElementName = "mainInfo", Namespace = "http://zakupki.gov.ru/223fz/types/1")]
         public MainInfo MainInfo { get; set; }
     }
-
-
+    
     [XmlRoot(ElementName = "orderClauseData", Namespace = "http://zakupki.gov.ru/223fz/orderClauseList/1")]
     public class OrderClauseData
     {
@@ -92,5 +81,4 @@ namespace ParseXmlProj
         [XmlAttribute(AttributeName = "ns4", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string Ns4 { get; set; }
     }
-
 }
