@@ -7,55 +7,30 @@ import { AppThunkAction } from './';
 
 export interface ContractsState {
     isLoading: boolean;
-    //startDateIndex?: number;
     contracts: Contract[];
 }
 
-//export interface Contract {
-//    dateFormatted: string;
-//    temperatureC: number;
-//    temperatureF: number;
-//    summary: string;
-//}
 export interface Contract {
-    id: string;
-    registrationNumber: string;
+    contractCreateDate: string;
     createDateTime: string;
+    fulfillmentDate: string;
+    guid: string;
+    id: number;
     name: string;
+    publicationDateTime: string;
+    registrationNumber: string;
+    status: string;
+    sum: string;
+    type: string;
+    urlOOS: string;
+    version: string;
 }
 //export interface Contract {
-//    Id: string;
-//    RegistrationNumber: string;
-//    CreateDateTime: string;
-//    Name: string;
+//    id: string;
+//    registrationNumber: string;
+//    createDateTime: string;
+//    name: string;
 //}
-//public class PurchaseContractData {
-//    public int Id { get; set; }
-//        public string Guid { get; set; }
-//        public string RegistrationNumber { get; set; }
-//        public string UrlOOS { get; set; }
-//        public string CreateDateTime { get; set; }
-//        public string ContractCreateDate { get; set; }
-//        public Lot Lot { get; set; }
-//        public Currency Currency { get; set; }
-//        public string Sum { get; set; }
-//        public string FulfillmentDate { get; set; }
-//        public PurchaseInfo PurchaseInfo { get; set; }
-//        public Placer Placer { get; set; }
-//        public CustomerInfo CustomerInfo { get; set; }
-//        public Supplier Supplier { get; set; }
-//        public DeliveryPlace DeliveryPlace { get; set; }
-//        public string DeliveryPlaceIndication { get; set; }
-//        public ContractItems ContractItems { get; set; }
-//        public string Type { get; set; }
-//        public string Name { get; set; }
-//        public string PublicationDateTime { get; set; }
-//        public string Status { get; set; }
-//        public string Version { get; set; }
-//        public string Attachments { get; set; }
-//    }
-
-
 
 // -----------------
 // ACTIONS - These are serializable (hence replayable) descriptions of state transitions.
@@ -90,7 +65,6 @@ export const actionCreators = {
         let fetchTask = fetch(`api/PurchaseContractDatas`)
             .then(response => response.json() as Promise<Contract[]>)
             .then(data => {
-                //debugger;
                 dispatch({ type: 'RECEIVE_CONTRACTS', contracts: data });
             });
 

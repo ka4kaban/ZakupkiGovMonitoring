@@ -3,6 +3,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { ApplicationState } from '../../store';
 import * as ContractsState from '../../store/Contracts';
+import { ContractPreview } from '../contractCommmon/ContractPreview';
+
 
 //http://zakupki.gov.ru/epz/contract/contractCard/common-info.html?reestrNumber=0335300036911000008&source=epz
 //http://zakupki.gov.ru/223/purchase/public/purchase/info/common-info.html?regNumber=31300690059
@@ -18,28 +20,28 @@ type ContractsProps =
 //class FetchData extends React.Component<WeatherForecastProps, {}> {
 
 //<div className="container">
-            //    <div className="row">
-            //        <div className="col-sm">
-            //            One of three columns
-            //        </div>
-            //        <div className="col-sm">
-            //            One of three columns
-            //        </div>
-            //        <div className="col-sm">
-            //            One of three columns
-            //        </div>
-            //    </div>
-            //</div>
+//    <div className="row">
+//        <div className="col-sm">
+//            One of three columns
+//        </div>
+//        <div className="col-sm">
+//            One of three columns
+//        </div>
+//        <div className="col-sm">
+//            One of three columns
+//        </div>
+//    </div>
+//</div>
 
-            //<div className="form-group">
-            //    <label htmlFor="exampleInputEmail1">Email address</label>
-            //    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-            //    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-            //</div>
-            //<div className="form-group">
-            //    <label htmlFor="exampleInputPassword1">Password</label>
-            //    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
-            //</div>
+//<div className="form-group">
+//    <label htmlFor="exampleInputEmail1">Email address</label>
+//    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+//    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+//</div>
+//<div className="form-group">
+//    <label htmlFor="exampleInputPassword1">Password</label>
+//    <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+//</div>
 
 //Номер контракта: 4770238802718000075 registrationNumber / purchaseRegNum
 //Сумма контракта: 61 198 300 000 RUB currency / sum
@@ -59,7 +61,7 @@ type ContractsProps =
 //Количество поставщиков: 2 Показать
 
 //export default
-    class Contract extends React.Component<ContractsProps, {}> {
+class Contract extends React.Component<ContractsProps, {}> {
     componentWillMount() {
         // This method runs when the component is first added to the page
         //let startDateIndex = parseInt(this.props.match.params.startDateIndex) || 0;
@@ -70,43 +72,35 @@ type ContractsProps =
         // This method runs when incoming props (e.g., route params) change
         //let startDateIndex = parseInt(nextProps.match.params.startDateIndex) || 0;
         this.props.requestContracts();
+    }
+    private renderContractPreviews() {
+        let resArr: any = [];
+        if (!this.props.contracts)
+            return resArr;
+        for (let i = 0; i < this.props.contracts.length; i++) {
+            let contract = this.props.contracts[i];
+            resArr.push(<ContractPreview key={i} contract={contract} />);
         }
-        private renderContracts() {
-            //debugger
-            return <table className='table'>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Temp. (C)</th>
-                        <th>Temp. (F)</th>
-                        <th>Summary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.props.contracts.map(contract =>
-                        <tr key={contract.id}>
-                            <td>{contract.createDateTime}</td>
-                            <td>{contract.name}</td>
-                            <td>{contract.registrationNumber}</td>
-                        </tr>
-                    )}
-                </tbody>
-            </table>;
-        }
+        return resArr;
+    }
+
     public render() {
 
         return <div>
-            {this.renderContracts()}
-            <button type="button" className="btn btn-light">Light</button>
-            <button type="button" className="btn btn-dark">Dark</button>
-
-           
-
-            </div>;
+            {this.renderContractPreviews()}
+            <nav aria-label="Page navigation example">
+                <ul className="pagination">
+                    <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                    <li className="page-item"><a className="page-link" href="#">1</a></li>
+                    <li className="page-item"><a className="page-link" href="#">2</a></li>
+                    <li className="page-item"><a className="page-link" href="#">3</a></li>
+                    <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>;
     }
 }
 export default connect(
     (state: ApplicationState) => state.contracts, // Selects which state properties are merged into the component's props
     ContractsState.actionCreators                 // Selects which action creators are merged into the component's props
 )(Contract) as typeof Contract;
-  

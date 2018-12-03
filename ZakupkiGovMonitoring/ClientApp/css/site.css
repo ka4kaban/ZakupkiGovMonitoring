@@ -9,7 +9,21 @@
     background-color: #4189C7;
     color: white;
 }
-
+.contractPreview {
+    padding-top:10px;
+}
+.registerBox {
+    padding-top: 10px;
+    border: 2px solid #d3d7db;
+    border-radius: 5px;
+    padding: 0;
+    position: relative;
+}
+    .registerBox td {
+        color: #41484e;
+        padding-left: 17px;
+        vertical-align: top;
+    }
 /* Keep the nav menu independent of scrolling and on top of other items */
 .main-nav {
     position: fixed;
