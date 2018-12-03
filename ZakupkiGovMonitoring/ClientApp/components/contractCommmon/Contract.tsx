@@ -84,10 +84,10 @@ type ContractsProps =
                 </thead>
                 <tbody>
                     {this.props.contracts.map(contract =>
-                        <tr key={contract.Id}>
-                            <td>{contract.CreateDateTime}</td>
-                            <td>{contract.Name}</td>
-                            <td>{contract.RegistrationNumber}</td>
+                        <tr key={contract.id}>
+                            <td>{contract.createDateTime}</td>
+                            <td>{contract.name}</td>
+                            <td>{contract.registrationNumber}</td>
                         </tr>
                     )}
                 </tbody>
