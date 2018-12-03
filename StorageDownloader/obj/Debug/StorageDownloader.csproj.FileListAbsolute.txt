@@ -1,7 +1,0 @@
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\bin\Debug\StorageDownloader.exe.config
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\bin\Debug\StorageDownloader.exe
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\bin\Debug\StorageDownloader.pdb
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\obj\Debug\StorageDownloader.csprojAssemblyReference.cache
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\obj\Debug\StorageDownloader.csproj.CoreCompileInputs.cache
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\obj\Debug\StorageDownloader.exe
-C:\Users\Serega\source\repos\ParseXmlProj\StorageDownloader\obj\Debug\StorageDownloader.pdb
