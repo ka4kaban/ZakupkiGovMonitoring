@@ -26,6 +26,9 @@
   <ItemGroup>
     <None Remove="ClientApp\components\contractCommmon\Contract.tsx" />
     <None Remove="ClientApp\components\contractCommmon\ContractPreview.tsx" />
+    <None Remove="ClientApp\components\contractCommmon\ContractsList.tsx" />
+    <None Remove="ClientApp\components\pagination.tsx" />
+    <None Remove="ClientApp\components\search\Search.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +38,9 @@
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\components\contractCommmon\ContractPreview.tsx" />
     <TypeScriptCompile Include="ClientApp\components\contractCommmon\Contract.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\contractCommmon\ContractsList.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\pagination.tsx" />
+    <TypeScriptCompile Include="ClientApp\components\search\Search.tsx" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

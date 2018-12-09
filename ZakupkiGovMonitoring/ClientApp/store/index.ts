@@ -1,11 +1,11 @@
-import * as WeatherForecasts from './WeatherForecasts';
+//import * as WeatherForecasts from './WeatherForecasts';
 import * as Contracts from './Contracts';
-import * as Counter from './Counter';
+//import * as Counter from './Counter';
 
 // The top-level state object
 export interface ApplicationState {
-    counter: Counter.CounterState;
-    weatherForecasts: WeatherForecasts.WeatherForecastsState;
+    //counter: Counter.CounterState;
+    //weatherForecasts: WeatherForecasts.WeatherForecastsState;
     contracts: Contracts.ContractsState;
 }
 
@@ -13,9 +13,10 @@ export interface ApplicationState {
 // the reducer with the matching name. It's important that the names match exactly, and that the reducer
 // acts on the corresponding ApplicationState property type.
 export const reducers = {
-    counter: Counter.reducer,
-    contracts: Contracts.reducer,
-    weatherForecasts: WeatherForecasts.reducer
+    //counter: Counter.reducer,
+    contracts: Contracts.reducer
+    //,
+    //weatherForecasts: WeatherForecasts.reducer
 };
 
 // This type can be used as a hint on action creators so that its 'dispatch' and 'getState' params are
