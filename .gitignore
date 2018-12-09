@@ -54,3 +54,4 @@
 /Monitoring/bin/Debug/netcoreapp2.0/Monitoring.runtimeconfig.json
 /Monitoring/obj/Debug/netcoreapp2.0/Monitoring.csproj.FileListAbsolute.txt
 /Monitoring/obj/Debug/netcoreapp2.0/Monitoring.csprojAssemblyReference.cache
+/Monitoring/node_modules/
