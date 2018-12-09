@@ -1,0 +1,11 @@
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\bin\Debug\netcoreapp2.0\Monitoring.deps.json
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\bin\Debug\netcoreapp2.0\Monitoring.runtimeconfig.json
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\bin\Debug\netcoreapp2.0\Monitoring.runtimeconfig.dev.json
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\bin\Debug\netcoreapp2.0\Monitoring.dll
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\bin\Debug\netcoreapp2.0\Monitoring.pdb
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.csproj.CoreCompileInputs.cache
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.AssemblyInfoInputs.cache
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.AssemblyInfo.cs
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.dll
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.pdb
+C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.csprojAssemblyReference.cache
