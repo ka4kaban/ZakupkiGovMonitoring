@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routing from '../routes/route.jsx';
 import Header from './header/header.jsx';
+import Button from '@material-ui/core/Button';
 
 export default class App extends React.Component {
 
@@ -10,6 +11,10 @@ export default class App extends React.Component {
         return (
             <Router basename="PersonalPortal">
                 <div>
+                    <button type="button" class="btn btn-primary">Primary</button>
+                    <Button variant="contained" color="primary">
+                      Hello World
+                    </Button>
                     <Header />
                     <Routing />
                 </div>
