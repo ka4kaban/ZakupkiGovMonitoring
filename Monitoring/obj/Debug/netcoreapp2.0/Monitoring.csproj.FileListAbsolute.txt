@@ -8,4 +8,3 @@ C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Mon
 C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.AssemblyInfo.cs
 C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.dll
 C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.pdb
-C:\Users\Serega\source\repos\ParseXmlProj\Monitoring\obj\Debug\netcoreapp2.0\Monitoring.csprojAssemblyReference.cache
