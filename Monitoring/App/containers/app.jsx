@@ -11,7 +11,7 @@ export default class App extends React.Component {
         return (
             <Router basename="PersonalPortal">
                 <div>
-                    <button type="button" class="btn btn-primary">Primary</button>
+                    <button type="button" className="btn btn-primary">Primary</button>
                     <Button variant="contained" color="primary">
                       Hello World
                     </Button>

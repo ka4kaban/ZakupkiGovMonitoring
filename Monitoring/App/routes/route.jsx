@@ -5,6 +5,7 @@ import Blog from '../containers/blog/blog.jsx';
 import About from '../containers/about/about.jsx';
 import Comments from '../containers/comments/comments.jsx';
 import NewPost from '../containers/newPost/newPost.jsx';
+import ContractsList from '../containers/contactsList/contactsList.jsx';
 
 export default class Routing extends React.Component {
 
@@ -12,6 +13,7 @@ export default class Routing extends React.Component {
         return (
             <main>
                 <Switch>
+                    <Route path="/contractsList" component={ContractsList} />
                     <Route path="/about" component={About} />
                     <Route path="/blog/new" component={NewPost} />
                     <Route path="/blog/post" component={Comments} />

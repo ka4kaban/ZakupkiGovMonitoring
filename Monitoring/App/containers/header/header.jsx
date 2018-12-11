@@ -38,6 +38,9 @@ class Header extends React.Component {
                 <menu className="menu">
                     <ul>
                         <li>
+                            <Link to="/contractsList">contractsList</Link>
+                        </li>
+                        <li>
                             <Link to="/blog">Блог</Link>
                         </li>
                         <li>
