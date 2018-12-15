@@ -27,6 +27,12 @@ namespace Monitoring.Controllers
         {
             return _context.PurchaseContractData.Where(i=> i.Id<20);
         }
+        // GET: api/PurchaseContractDatas/filter
+        [HttpGet]
+        public IEnumerable<PurchaseContractData> GetPurchaseContractData([FromRoute] string filter)
+        {
+            return _context.PurchaseContractData.Where(i => i.Id < 20);
+        }
 
         // GET: api/PurchaseContractDatas/5
         [HttpGet("{id}")]

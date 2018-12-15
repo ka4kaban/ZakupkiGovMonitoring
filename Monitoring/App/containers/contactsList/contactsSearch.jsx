@@ -5,20 +5,31 @@ import Paper from '@material-ui/core/Paper';
 import Select from '@material-ui/core/Select';
 import TextField from '@material-ui/core/TextField';
 import React from 'react';
+import Button from '@material-ui/core/Button';
 
 
 export default class ContractsSearch extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            purchaseNumber:0,
-            budget: 0,
-            sumStart: 0,
-            sumEnd: 0
+            purchaseNumber: null,
+            purchaseDate: null,
+            budget: null,
+            region: null,
+            sumStart: null,
+            sumEnd: null
         }
     }
-    handleChange(val) {
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
+    onSearch() {
+        debugger
+        this.props.requestContracts(this.state);
     }
+
     render() {
         return (<Paper className="root">
             <div className="row">
@@ -29,7 +40,7 @@ export default class ContractsSearch extends React.Component {
                         multiline
                         rowsMax="4"
                         value={this.state.purchaseNumber}
-                        onChange={this.handleChange('multiline')}
+                        onChange={this.handleChange('purchaseNumber')}
                         className="textField"
                         margin="normal"
                     />
@@ -37,10 +48,12 @@ export default class ContractsSearch extends React.Component {
                 <div className="col-md-3">
                     <form className="container" noValidate>
                         <TextField
-                            id="date"
+                            id="purchaseDate"
                             label="Дата заключения контракта"
                             type="date"
-                            defaultValue="2017-05-24"
+                            onChange={this.handleChange('purchaseDate')}
+                            value={this.state.purchaseDate}
+                            //defaultValue="2017-05-24"
                             className="textField"
                             InputLabelProps={{
                                 shrink: true,
@@ -54,7 +67,7 @@ export default class ContractsSearch extends React.Component {
                         label="Сумма контракта от"
                         className="textField"
                         value={this.state.sumStart}
-                        onChange={this.handleChange('name')}
+                        onChange={this.handleChange('sumStart')}
                         margin="normal"
                     />
                 </div>
@@ -64,7 +77,7 @@ export default class ContractsSearch extends React.Component {
                         label="Сумма контракта до"
                         className="textField"
                         value={this.state.sumEnd}
-                        onChange={this.handleChange('name')}
+                        onChange={this.handleChange('sumEnd')}
                         margin="normal"
                     />
                 </div>
@@ -75,7 +88,7 @@ export default class ContractsSearch extends React.Component {
                         <InputLabel htmlFor="region-simple">Регион госзаказчика</InputLabel>
                         <Select
                             value={this.state.region}
-                            onChange={this.handleChange}
+                            onChange={this.handleChange('region')}
                             inputProps={{
                                 name: 'region',
                                 id: 'region-simple',
@@ -92,10 +105,10 @@ export default class ContractsSearch extends React.Component {
                 </div>
                 <div className="col-md-3">
                     <FormControl className="formControl">
-                        <InputLabel htmlFor="age-simple">Age</InputLabel>
+                        <InputLabel htmlFor="age-simple">бюджет</InputLabel>
                         <Select
                             value={this.state.budget}
-                            onChange={this.handleChange}
+                            onChange={this.handleChange('budget')}
                             inputProps={{
                                 name: 'budget',
                                 id: 'budget-simple',
@@ -116,15 +129,18 @@ export default class ContractsSearch extends React.Component {
                 </div>
                 <div className="col-md-3">
 
-                    Сортировать
-                         
+                    <Button variant="contained" color="secondary" className="button" onClick={this.onSearch.bind(this)}>
+                        ПОИСК
+                    </Button>
+
                 </div>
                 <div className="col-md-3">
-                    Адрес:
-                ИНН заказчика
-                КПП заказчика
-                ИНН поставщика
-                КПП поставщика
+                    Сортировать
+                  Адрес:
+              ИНН заказчика
+              КПП заказчика
+              ИНН поставщика
+              КПП поставщика
                 </div>
             </div>
         </Paper>);

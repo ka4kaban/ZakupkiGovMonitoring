@@ -82,7 +82,7 @@ class ContractsList extends React.Component {
         //    rowCount={data.length}
         ///>
         return (<div><Paper className="root">
-            <ContractsSearch />
+            <ContractsSearch requestContracts={this.props.requestContracts.bind(this)} />
             <Table className="table">
                 <TableHead>
                     <TableRow>
