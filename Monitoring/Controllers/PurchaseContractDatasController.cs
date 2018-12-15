@@ -50,8 +50,8 @@ namespace Monitoring.Controllers
             if (!string.IsNullOrEmpty(filterObj.PurchaseNumber))
                 res = res.Where(t => t.RegistrationNumber.Contains(filterObj.PurchaseNumber));
 
-            //if (filterObj.PurchaseDate != null)
-            //    res = res.Where(t => t.ContractCreateDate > filterObj.PurchaseDate);
+            if (filterObj.PurchaseDate != null)
+                res = res.Where(t => DateTime.Parse(t.ContractCreateDate) > filterObj.PurchaseDate);
 
             //&& (filterObj.PurchaseDate == null || t.RegistrationNumber.Contains(filterObj.PurchaseNumber))
             //&& (filterObj.Region == null || t.)
