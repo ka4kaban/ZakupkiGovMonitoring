@@ -9,3 +9,4 @@ C:\Users\Serega\source\repos\ParseXmlProj\ParseXmlProj\bin\Debug\EntityFramework
 C:\Users\Serega\source\repos\ParseXmlProj\ParseXmlProj\bin\Debug\EntityFramework.xml
 C:\Users\Serega\source\repos\ParseXmlProj\ParseXmlProj\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Serega\source\repos\ParseXmlProj\ParseXmlProj\obj\Debug\ParseXmlProj.csproj.CopyComplete
+C:\Users\Serega\source\repos\ParseXmlProj\ParseXmlProj\obj\Debug\ParseXmlProj.csprojAssemblyReference.cache

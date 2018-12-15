@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Monitoring.Models;
+using Newtonsoft.Json;
 using ParseXmlProj;
 
 namespace Monitoring.Controllers
@@ -21,19 +22,82 @@ namespace Monitoring.Controllers
             _context = context;
         }
 
-        // GET: api/PurchaseContractDatas
-        [HttpGet]
-        public IEnumerable<PurchaseContractData> GetPurchaseContractData()
-        {
-            return _context.PurchaseContractData.Where(i=> i.Id<20);
-        }
+        //// GET: api/PurchaseContractDatas
+        //[HttpGet]
+        //public IEnumerable<PurchaseContractData> GetPurchaseContractData()
+        //{
+        //    return _context.PurchaseContractData.Where(i=> i.Id<20);
+        //}
         // GET: api/PurchaseContractDatas/filter
-        [HttpGet]
-        public IEnumerable<PurchaseContractData> GetPurchaseContractData([FromRoute] string filter)
+        [HttpGet("[action]")]
+        public IEnumerable<PurchaseContractData> GetPurchaseContractData(string filter)
         {
-            return _context.PurchaseContractData.Where(i => i.Id < 20);
+            if (string.IsNullOrEmpty(filter) || filter == "{}")
+                return _context.PurchaseContractData.Where(i => i.Id < 20);
+
+            PurchaseFilter filterObj = JsonConvert.DeserializeObject<PurchaseFilter>(filter);
+
+            //IEnumerable<PurchaseContractData> res = _context.PurchaseContractData.Where(t => 
+            //(string.IsNullOrEmpty(filterObj.PurchaseNumber) || t.RegistrationNumber.Contains(filterObj.PurchaseNumber))
+            //&& (filterObj.PurchaseDate == null || t.RegistrationNumber.Contains(filterObj.PurchaseNumber))
+            ////&& (filterObj.Region == null || t.)
+            ////&& (filterObj.Budget == null || t.)
+            //&& (filterObj.SumStart == null || float.Parse(t.Sum) > filterObj.SumStart)
+            //&& (filterObj.SumEnd == null || float.Parse(t.Sum) < filterObj.SumEnd)
+
+            //);
+            IEnumerable<PurchaseContractData> res = _context.PurchaseContractData.AsNoTracking();
+            if (!string.IsNullOrEmpty(filterObj.PurchaseNumber))
+                res = res.Where(t => t.RegistrationNumber.Contains(filterObj.PurchaseNumber));
+
+            //if (filterObj.PurchaseDate != null)
+            //    res = res.Where(t => t.ContractCreateDate > filterObj.PurchaseDate);
+
+            //&& (filterObj.PurchaseDate == null || t.RegistrationNumber.Contains(filterObj.PurchaseNumber))
+            //&& (filterObj.Region == null || t.)
+            //&& (filterObj.Budget == null || t.)
+            if (filterObj.SumStart != null)
+                res = res.Where(t => t.Sum ==null || float.Parse(t.Sum.Replace(".",",")) > filterObj.SumStart); //TODO: performance
+
+            if (filterObj.SumEnd != null)
+                res = res.Where(t => t.Sum == null || float.Parse(t.Sum.Replace(".", ",")) < filterObj.SumEnd);
+
+            //&& (filterObj.SumStart == null || float.Parse(t.Sum) > filterObj.SumStart)
+            //&& (filterObj.SumEnd == null || float.Parse(t.Sum) < filterObj.SumEnd)
+
+            //);
+            return res;
+            //if ()
+            //.Where(i => i.RegistrationNumber < 20);
+
         }
 
+        // this.state = {
+        //    purchaseNumber: null,
+        //    purchaseDate: null,
+        //    budget: null,
+        //    region: null,
+        //    sumStart: null,
+        //    sumEnd: null
+        //}
+    public class PurchaseFilter
+        {
+            [JsonProperty("purchaseNumber")]
+            public string PurchaseNumber { get; set; }
+            [JsonProperty("purchaseDate")]
+            public Nullable<DateTime> PurchaseDate { get; set; }
+            [JsonProperty("budget")]
+            public Nullable<int> Budget { get; set; }
+            [JsonProperty("region")]
+            public Nullable<int> Region { get; set; }
+            [JsonProperty("sumStart")]
+            public Nullable<int> SumStart { get; set; }
+            [JsonProperty("sumEnd")]
+            public Nullable<int> SumEnd { get; set; }
+        }
+
+        //[HttpGet("[action]")]
+        //public IEnumerable<Book> Books(string filter)
         // GET: api/PurchaseContractDatas/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetPurchaseContractData([FromRoute] int id)

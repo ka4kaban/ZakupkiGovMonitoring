@@ -4,22 +4,9 @@ import "isomorphic-fetch"
 
 
 export function requestContracts(filter) {
-    if (filter) {
-        return (dispatch) => {
-            fetch('/api/PurchaseContractDatas?filter=' + JSON.stringify(filter))
-                .then((response) => {
-                    return response.json();
-                }).then((data) => {
-                    dispatch({ type: GET_PURCHASE_SUCCESS, payload: data });
-                }).catch((ex) => {
-                    alert(ex);
-                    dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
-                });
-        }
-    }
-
+    filter = filter || {};
     return (dispatch) => {
-        fetch('/api/PurchaseContractDatas')
+        fetch('/api/PurchaseContractDatas/GetPurchaseContractData?filter=' + JSON.stringify(filter))
             .then((response) => {
                 return response.json();
             }).then((data) => {
@@ -29,6 +16,19 @@ export function requestContracts(filter) {
                 dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
             });
     }
+    //}
+
+    //return (dispatch) => {
+    //    fetch('/api/PurchaseContractDatas')
+    //        .then((response) => {
+    //            return response.json();
+    //        }).then((data) => {
+    //            dispatch({ type: GET_PURCHASE_SUCCESS, payload: data });
+    //        }).catch((ex) => {
+    //            alert(ex);
+    //            dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
+    //        });
+    //}
 }
 
 //export function changeAuthor(author) {

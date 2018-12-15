@@ -52732,21 +52732,9 @@ var _contactsListConstants = __webpack_require__(134);
 __webpack_require__(28);
 
 function requestContracts(filter) {
-    if (filter) {
-        return function (dispatch) {
-            fetch('/api/PurchaseContractDatas?filter=' + JSON.stringify(filter)).then(function (response) {
-                return response.json();
-            }).then(function (data) {
-                dispatch({ type: _contactsListConstants.GET_PURCHASE_SUCCESS, payload: data });
-            }).catch(function (ex) {
-                alert(ex);
-                dispatch({ type: _contactsListConstants.GET_PURCHASE_ERROR, payload: ex });
-            });
-        };
-    }
-
+    filter = filter || {};
     return function (dispatch) {
-        fetch('/api/PurchaseContractDatas').then(function (response) {
+        fetch('/api/PurchaseContractDatas/GetPurchaseContractData?filter=' + JSON.stringify(filter)).then(function (response) {
             return response.json();
         }).then(function (data) {
             dispatch({ type: _contactsListConstants.GET_PURCHASE_SUCCESS, payload: data });
@@ -52755,6 +52743,19 @@ function requestContracts(filter) {
             dispatch({ type: _contactsListConstants.GET_PURCHASE_ERROR, payload: ex });
         });
     };
+    //}
+
+    //return (dispatch) => {
+    //    fetch('/api/PurchaseContractDatas')
+    //        .then((response) => {
+    //            return response.json();
+    //        }).then((data) => {
+    //            dispatch({ type: GET_PURCHASE_SUCCESS, payload: data });
+    //        }).catch((ex) => {
+    //            alert(ex);
+    //            dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
+    //        });
+    //}
 }
 
 //export function changeAuthor(author) {
