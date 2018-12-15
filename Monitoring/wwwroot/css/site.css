@@ -1,6 +1,11 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /*background-color:red;
+     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px !important;
+    line-height: 1.42857143;
+    color: #333;*/
 }
 
 /* Wrapping element */
@@ -8,6 +13,10 @@
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px !important;
+    line-height: 1.42857143;
+    color: #333;*/
 }
 
 /* Carousel */
@@ -32,4 +41,43 @@
     .carousel-caption {
         display: none;
     }
+}
+
+.root {
+    flex-grow: 1;
+    /*width: 100%;*/
+    /*margin-top: theme.spacing.unit * 3;*/
+    /*overflow-x: auto;*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;*/
+}
+
+/*.table {
+    /*min-width: 700px;*/
+}*/
+
+,
+/*TODO: bad selector !!!*/
+/*.aaaaa {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px !important;
+    line-height: 1.42857143;
+    color: #333;
+   
+}*/
+.grow {
+    flex-grow: 1;
+}
+
+
+.menuButton {
+    margin-left: -12px;
+    margin-right: 20px,
+}
+
+.MuiTableCell-body-195{
+    font-size: 14px !important;
 }
