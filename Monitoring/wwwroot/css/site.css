@@ -81,3 +81,31 @@
 .MuiTableCell-body-195{
     font-size: 14px !important;
 }*/
+.textField {
+    margin-left: 8px !important;
+    margin-right: 8px !important;
+    width: 200px;
+    font-size: 14px;
+}
+.textField label{
+    font-size: 13px;
+}
+    .textField textarea,
+    .textField div {
+        font-size: 14px;
+        min-height: 16px;
+    }
+    .app-menu-item,
+    .app-menu-item > span {
+        font-size: 18px;
+    }
+.purchase-grid-table-row .purchase-grid-table-cell {
+    font-size: 14px;
+}
+.purchase-grid-table-head {
+    background-color: #d60094;
+}
+    .purchase-grid-table-head .purchase-grid-table-row .purchase-grid-table-cell {
+        font-size: 18px;
+    }
+

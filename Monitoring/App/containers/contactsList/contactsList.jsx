@@ -60,13 +60,13 @@ class ContractsList extends React.Component {
         if (contracts && contracts.length > 0) {
             var rows = contracts.map(contract => {
                 return (
-                    <TableRow key={contract.id} >
-                        <TableCell component="th" scope="row">
+                    <TableRow key={contract.id} className="purchase-grid-table-row">
+                        <TableCell component="th" scope="row" className="purchase-grid-table-cell">
                             {contract.name}
                         </TableCell>
-                        <TableCell numeric>{contract.sum}</TableCell>
-                        <TableCell numeric>{contract.contractCreateDate}</TableCell>
-                        <TableCell numeric>{contract.registrationNumber}</TableCell>
+                        <TableCell numeric className="purchase-grid-table-cell">{contract.sum}</TableCell>
+                        <TableCell numeric className="purchase-grid-table-cell">{contract.contractCreateDate}</TableCell>
+                        <TableCell numeric className="purchase-grid-table-cell">{contract.registrationNumber}</TableCell>
                     </TableRow>
                 );
             })
@@ -84,12 +84,12 @@ class ContractsList extends React.Component {
         return (<div><Paper className="root">
             <ContractsSearch requestContracts={this.props.requestContracts.bind(this)} />
             <Table className="table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>name</TableCell>
-                        <TableCell numeric>sum</TableCell>
-                        <TableCell>contractCreateDate</TableCell>
-                        <TableCell>registrationNumber</TableCell>
+                <TableHead className="purchase-grid-table-head">
+                    <TableRow className="purchase-grid-table-row">
+                        <TableCell className="purchase-grid-table-cell">name</TableCell>
+                        <TableCell numeric className="purchase-grid-table-cell">sum</TableCell>
+                        <TableCell className="purchase-grid-table-cell">contractCreateDate</TableCell>
+                        <TableCell className="purchase-grid-table-cell">registrationNumber</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>

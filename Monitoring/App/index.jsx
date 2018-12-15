@@ -3,6 +3,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import App from './containers/app.jsx'
 import configureStore from './store/configureStore.jsx'
+import 'normalize.css'
 
 const store = configureStore();
 

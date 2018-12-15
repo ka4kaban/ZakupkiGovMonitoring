@@ -27,11 +27,11 @@ class Header extends React.Component {
                         <Typography variant="h6" color="inherit" className="grow">
                             News
           </Typography> */}
-                        <Button color="inherit">Закупки</Button>
-                        <Button color="inherit">Аналитика</Button>
-                        <Button color="inherit">Пылесос</Button>
-                        <Button color="inherit">Отчеты</Button>
-                        <Button color="inherit">Личный кабинет</Button>
+                        <Button color="inherit" className='app-menu-item'>Закупки</Button>
+                        <Button color="inherit" className='app-menu-item'>Аналитика</Button>
+                        <Button color="inherit" className='app-menu-item'>Пылесос</Button>
+                        <Button color="inherit" className='app-menu-item'>Отчеты</Button>
+                        <Button color="inherit" className='app-menu-item'>Личный кабинет</Button>
                     </Toolbar>
                 </AppBar>
             </div>

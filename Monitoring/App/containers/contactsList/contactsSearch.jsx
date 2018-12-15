@@ -35,7 +35,7 @@ export default class ContractsSearch extends React.Component {
     render() {
         return (<Paper className="root">
             <div className="row">
-                <div className="col-md-3">
+                <div className="col-md-3 align-middle">
                     <TextField
                         id="standard-purchaseNumber-flexible"
                         label="Номер контракта"
@@ -47,7 +47,7 @@ export default class ContractsSearch extends React.Component {
                         margin="normal"
                     />
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 align-middle">
                     {/*<form className="container" noValidate>*/}
                     <TextField
                         id="purchaseDate"
@@ -63,7 +63,7 @@ export default class ContractsSearch extends React.Component {
                     />
                     {/*</form>*/}
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 align-middle">
                     <TextField
                         id="sumStart"
                         label="Сумма контракта от"
@@ -73,7 +73,7 @@ export default class ContractsSearch extends React.Component {
                         margin="normal"
                     />
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-3 align-middle">
                     <TextField
                         id="sumEnd"
                         label="Сумма контракта до"
