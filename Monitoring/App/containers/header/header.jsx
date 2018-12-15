@@ -21,13 +21,17 @@ class Header extends React.Component {
             <div className="root">
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton className="menuButton" color="inherit" aria-label="Menu">
+                        {/*- <IconButton className="menuButton" color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" color="inherit" className="grow">
                             News
-          </Typography>
-                        <Button color="inherit">Login</Button>
+          </Typography> */}
+                        <Button color="inherit">Закупки</Button>
+                        <Button color="inherit">Аналитика</Button>
+                        <Button color="inherit">Пылесос</Button>
+                        <Button color="inherit">Отчеты</Button>
+                        <Button color="inherit">Личный кабинет</Button>
                     </Toolbar>
                 </AppBar>
             </div>

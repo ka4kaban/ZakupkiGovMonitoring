@@ -43,8 +43,8 @@
     }
 }
 
-.root {
-    flex-grow: 1;
+/*.root {
+    flex-grow: 1;*/
     /*width: 100%;*/
     /*margin-top: theme.spacing.unit * 3;*/
     /*overflow-x: auto;*/
@@ -53,13 +53,13 @@
     line-height: 1.42857143;
     color: #333;
     background-color: #fff;*/
-}
+/*}*/
 
 /*.table {
     /*min-width: 700px;*/
-}*/
+/*}*/
 
-,
+
 /*TODO: bad selector !!!*/
 /*.aaaaa {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -68,7 +68,7 @@
     color: #333;
    
 }*/
-.grow {
+/*.grow {
     flex-grow: 1;
 }
 
@@ -80,4 +80,4 @@
 
 .MuiTableCell-body-195{
     font-size: 14px !important;
-}
+}*/

@@ -57,7 +57,7 @@ namespace Monitoring.Controllers
             //&& (filterObj.Region == null || t.)
             //&& (filterObj.Budget == null || t.)
             if (filterObj.SumStart != null)
-                res = res.Where(t => t.Sum ==null || float.Parse(t.Sum.Replace(".",",")) > filterObj.SumStart); //TODO: performance
+                res = res.Where(t => t.Sum == null || float.Parse(t.Sum.Replace(".", ",")) > filterObj.SumStart); //TODO: performance
 
             if (filterObj.SumEnd != null)
                 res = res.Where(t => t.Sum == null || float.Parse(t.Sum.Replace(".", ",")) < filterObj.SumEnd);
@@ -80,7 +80,7 @@ namespace Monitoring.Controllers
         //    sumStart: null,
         //    sumEnd: null
         //}
-    public class PurchaseFilter
+        public class PurchaseFilter
         {
             [JsonProperty("purchaseNumber")]
             public string PurchaseNumber { get; set; }

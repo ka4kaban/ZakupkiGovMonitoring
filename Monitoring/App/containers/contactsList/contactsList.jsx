@@ -118,18 +118,18 @@ class ContractsList extends React.Component {
     }
 
     handleChangePage = (event, page) => {
-        this.setState({ page });
+        //this.setState({ page });
     };
 
     handleChangeRowsPerPage = event => {
-        this.setState({ rowsPerPage: event.target.value });
+        //this.setState({ rowsPerPage: event.target.value });
     };
     handleSelectAllClick = event => {
-        if (event.target.checked) {
-            this.setState(state => ({ selected: state.data.map(n => n.id) }));
-            return;
-        }
-        this.setState({ selected: [] });
+        //if (event.target.checked) {
+        //    this.setState(state => ({ selected: state.data.map(n => n.id) }));
+        //    return;
+        //}
+        //this.setState({ selected: [] });
     };
     //render() {
     //    return (<div>
