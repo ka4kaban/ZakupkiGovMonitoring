@@ -1,4 +1,4 @@
-﻿import { GET_PURCHASE_SUCCESS, GET_PURCHASE_ERROR } from './contactsListConstants.jsx'
+﻿import { GET_PURCHASE_SUCCESS, GET_PURCHASE_ERROR, GET_PURCHASE_CONTRACT_ERROR, GET_PURCHASE_CONTRACT_SUCCESS } from './contractsListConstants.jsx'
 //import AuthHelper from '../../Utils/authHelper'
 import "isomorphic-fetch"
 
@@ -16,21 +16,21 @@ export function requestContracts(filter) {
                 dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
             });
     }
-    //}
-
-    //return (dispatch) => {
-    //    fetch('/api/PurchaseContractDatas')
-    //        .then((response) => {
-    //            return response.json();
-    //        }).then((data) => {
-    //            dispatch({ type: GET_PURCHASE_SUCCESS, payload: data });
-    //        }).catch((ex) => {
-    //            alert(ex);
-    //            dispatch({ type: GET_PURCHASE_ERROR, payload: ex });
-    //        });
-    //}
 }
 
+export function requestContractByRegNumber(regNumber) {
+    return (dispatch) => {
+        fetch('/api/PurchaseContractDatas/GetPurchasebyRegNumber?regNumber=' + regNumber)
+            .then((response) => {
+                return response.json();
+            }).then((data) => {
+                dispatch({ type: GET_PURCHASE_CONTRACT_SUCCESS, payload: data });
+            }).catch((ex) => {
+                alert(ex);
+                dispatch({ type: GET_PURCHASE_CONTRACT_ERROR, payload: ex });
+            });
+    }
+}
 //export function changeAuthor(author) {
 //    return {
 //        type: CHANGE_COMMENT_AUTHOR,

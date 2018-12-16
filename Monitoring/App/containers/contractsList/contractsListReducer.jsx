@@ -1,4 +1,4 @@
-﻿import { GET_PURCHASE_SUCCESS, GET_PURCHASE_ERROR} from './contactsListConstants.jsx'
+﻿import { GET_PURCHASE_SUCCESS, GET_PURCHASE_ERROR, GET_PURCHASE_CONTRACT_ERROR, GET_PURCHASE_CONTRACT_SUCCESS} from './contractsListConstants.jsx'
 
 //const initialState = {
 //    //data: { currentPage: 0, totalPages: 0, pageSize: 0, records: [] },
@@ -11,7 +11,8 @@
 
 const initialState = {
     data: { order: 'asc', orderBy: 'id', contracts: [], page: 0, rowsPerPage: 5},
-    error: ''
+    error: '',
+    contract: null
 }
 
 
@@ -21,6 +22,12 @@ export default function contracts(state = initialState, action) {
             return { ...state, data: action.payload, error: '' }
 
         case GET_PURCHASE_ERROR:
+            return { ...state, error: action.payload }
+
+        case GET_PURCHASE_CONTRACT_SUCCESS:
+            return { ...state, contract: action.payload, error: '' }
+
+        case GET_PURCHASE_CONTRACT_ERROR:
             return { ...state, error: action.payload }
 
    //     case ADD_COMMENT_SUCCESS:

@@ -22,6 +22,12 @@ namespace Monitoring.Controllers
             _context = context;
         }
 
+        [HttpGet("[action]")]
+        public PurchaseContractData GetPurchasebyRegNumber(string regNumber)
+        {
+            return _context.PurchaseContractData.Where(i => String.Equals(i.RegistrationNumber, regNumber)).FirstOrDefault();
+            //return _context.PurchaseContractData.Where(i => i.RegistrationNumber == regNumber).FirstOrDefault();
+        }
         //// GET: api/PurchaseContractDatas
         //[HttpGet]
         //public IEnumerable<PurchaseContractData> GetPurchaseContractData()

@@ -8,10 +8,12 @@ import React from 'react';
 import queryString from 'query-string';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ContactPreview from './components/contactPreview.jsx';
-import { requestContracts } from './contactsListActions.jsx';
+import ContractPreview from './components/contractPreview.jsx';
+import { requestContracts } from './contractsListActions.jsx';
 import TableHead from '@material-ui/core/TableHead';
-import  ContractsSearch  from './contactsSearch.jsx';
+import ContractsSearch from './contractsSearch.jsx';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
 class ContractsList extends React.Component {
     constructor(props) {
@@ -42,33 +44,12 @@ class ContractsList extends React.Component {
         }
     }
 
-
-    renderPreviews() {
-        var res = [];
-        if (this.props.contracts && this.props.contracts.length > 0) {
-            for (var i = 0; i < this.props.contracts.length; i++) {
-                res.push(<ContactPreview key={i} data={this.props.contracts[i]} />);
-            }
-        }
-        return res;
-
-    }
-
     render() {
         var contracts = this.props.contracts;
         const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
         if (contracts && contracts.length > 0) {
             var rows = contracts.map(contract => {
-                return (
-                    <TableRow key={contract.id} className="purchase-grid-table-row">
-                        <TableCell component="th" scope="row" className="purchase-grid-table-cell">
-                            {contract.name}
-                        </TableCell>
-                        <TableCell numeric className="purchase-grid-table-cell">{contract.sum}</TableCell>
-                        <TableCell numeric className="purchase-grid-table-cell">{contract.contractCreateDate}</TableCell>
-                        <TableCell numeric className="purchase-grid-table-cell">{contract.registrationNumber}</TableCell>
-                    </TableRow>
-                );
+                return (<ContractPreview key={contract.id} contract={contract} />)
             })
         }
 

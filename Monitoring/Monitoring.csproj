@@ -17,4 +17,8 @@
     <ProjectReference Include="..\ParseXmlProj\ParseXmlProj.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="App\containers\contract\components\" />
+  </ItemGroup>
+
 </Project>
