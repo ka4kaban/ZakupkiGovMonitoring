@@ -74,43 +74,16 @@
     <Compile Include="AutoClasses\PurchaseRejection.cs" />
     <Compile Include="DirtyContext.cs" />
     <Compile Include="Logger.cs" />
-    <Compile Include="Out1 - Copy.cs" />
     <Compile Include="Out1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Structure\Attachments.cs" />
-    <Compile Include="Structure\Contact.cs" />
-    <Compile Include="Structure\Contract.cs" />
-    <Compile Include="Structure\ContractItem.cs" />
-    <Compile Include="Structure\ContractItemCollection.cs" />
-    <Compile Include="Structure\Currency.cs" />
-    <Compile Include="Structure\CustomerInfo.cs" />
-    <Compile Include="Structure\DeliveryPlace.cs" />
-    <Compile Include="Structure\Document.cs" />
-    <Compile Include="Structure\DocumentationDelivery.cs" />
-    <Compile Include="Structure\ElectronicPlaceInfo.cs" />
-    <Compile Include="Structure\Lot.cs" />
-    <Compile Include="Structure\Lots.cs" />
-    <Compile Include="Structure\OKDP.cs" />
-    <Compile Include="Structure\OKEI.cs" />
-    <Compile Include="Structure\OKVED.cs" />
-    <Compile Include="Structure\Placer.cs" />
-    <Compile Include="Structure\PurchaseContractLot.cs" />
-    <Compile Include="Structure\PurchaseContract\PurchaseContractData.cs" />
-    <Compile Include="Structure\PurchaseContract\PurchaseContractHeader.cs" />
-    <Compile Include="Structure\PurchaseInfo.cs" />
-    <Compile Include="Structure\PurchaseNotice\PurchaseNoticeData.cs" />
-    <Compile Include="Structure\PurchaseNotice\PurchaseNoticeHeader.cs" />
-    <Compile Include="Structure\Supplier.cs" />
     <Compile Include="XElementExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Structure\PurchseProtocol\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="AutoClasses\readme.txt" />
   </ItemGroup>
