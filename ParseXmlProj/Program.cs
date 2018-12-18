@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System;
 using System.IO;
 using System.IO.Compression;
-//using System.IO.Compression.FileSystem;
+using DBModel;
 
 namespace ParseXmlProj
 {
@@ -16,6 +16,8 @@ namespace ParseXmlProj
         public const string extractFolder = @"D:\xmlStorage\extract\";
         static void Main(string[] args)
         {
+            Start.PursePurchaseContract();
+
             //string filePath = @"D:\xmlStorage\0000000001_purchaseContract_20131203_000000_001\0000000001_purchaseContract_20131203_000000_001.xml";
             //Xml2CSharpContract.PurchaseContract res1 = Out1.ParseXML<Xml2CSharpContract.PurchaseContract>(filePath);
 
@@ -28,7 +30,7 @@ namespace ParseXmlProj
             //string pathRej = @"D:\xmlStorage\0000000001_purchaseRejection_20140423_000000_001\0000000001_purchaseRejection_20140423_000000_001.xml";
             //Xml2CSharp5.PurchaseRejection resREj = Out1.ParseXML<Xml2CSharp5.PurchaseRejection>(pathRej);
 
-            ParseAllXML();
+            //ParseAllXML();
 
             //Archiver.UnzipAllFiles();
 
