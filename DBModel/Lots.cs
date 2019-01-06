@@ -9,15 +9,15 @@ namespace DBModel
 {
     public class Lots
     {
-        public List<Lot> LotItemns { get; set; }
+        public List<Lot> LotsList { get; set; }
 
         public Lots(XElement node)
         {
             IEnumerable<XElement> lotNodes = node.Descendants().Where(s => s.Name.LocalName.ToLower() == "lot".ToLower());
-            LotItemns = new List<Lot>();
+            LotsList = new List<Lot>();
             foreach (XElement el in lotNodes)
             {
-                LotItemns.Add(new Lot(el));
+                LotsList.Add(new Lot(el));
             }
 
         }

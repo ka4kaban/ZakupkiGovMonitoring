@@ -8,15 +8,35 @@ using System;
 using System.IO;
 using System.IO.Compression;
 using DBModel;
+using NLog;
 
 namespace ParseXmlProj
 {
     class Program
     {
+
+        public static Logger Logger { set; get; }
+        public static void InitNLog()
+        {
+            var config = new NLog.Config.LoggingConfiguration();
+
+            var logfile = new NLog.Targets.FileTarget("logfile") { FileName = "file.txt" };
+            var logconsole = new NLog.Targets.ConsoleTarget("logconsole");
+
+            config.AddRule(LogLevel.Info, LogLevel.Fatal, logconsole);
+            config.AddRule(LogLevel.Debug, LogLevel.Fatal, logfile);
+
+            NLog.LogManager.Configuration = config;
+            Logger = NLog.LogManager.GetCurrentClassLogger();
+        }
+
         public const string extractFolder = @"D:\xmlStorage\extract\";
         static void Main(string[] args)
         {
-            Start.PursePurchaseContract();
+            InitNLog();
+
+
+            //Start.PursePurchaseContract();
 
             //string filePath = @"D:\xmlStorage\0000000001_purchaseContract_20131203_000000_001\0000000001_purchaseContract_20131203_000000_001.xml";
             //Xml2CSharpContract.PurchaseContract res1 = Out1.ParseXML<Xml2CSharpContract.PurchaseContract>(filePath);
@@ -30,7 +50,7 @@ namespace ParseXmlProj
             //string pathRej = @"D:\xmlStorage\0000000001_purchaseRejection_20140423_000000_001\0000000001_purchaseRejection_20140423_000000_001.xml";
             //Xml2CSharp5.PurchaseRejection resREj = Out1.ParseXML<Xml2CSharp5.PurchaseRejection>(pathRej);
 
-            //ParseAllXML();
+            ParseAllXML();
 
             //Archiver.UnzipAllFiles();
 
@@ -80,8 +100,9 @@ namespace ParseXmlProj
                 result = typeof(PurchaseProtocol);
             else if (filName.Contains("purchaseContract"))
                 result = typeof(PurchaseContract);
-            else {
-                Logger.Log("class name for " + filName + " is not exists", Logger.LogType.Err);
+            else
+            {
+                //Logger.Log("class name for " + filName + " is not exists", Logger.LogType.Err);
             }
 
             return result;
@@ -91,41 +112,169 @@ namespace ParseXmlProj
         {
             List<string> result = new List<string>();
             DirectoryInfo root = new DirectoryInfo(extractFolder);
-            DirectoryInfo[] busDirs = root.GetDirectories();
+            //DirectoryInfo[] busDirs = root.GetDirectories();
 
-            using (var db = new DirtyContext())
+            //foreach (DirectoryInfo busDir in busDirs)
+            //{
+            //    DirectoryInfo[] dirs = busDir.GetDirectories();
+
+            //    foreach (DirectoryInfo dir in dirs)
+            //    {
+            //FileInfo[] files = root.GetFiles("*_purchaseContract_*.xml", SearchOption.AllDirectories).ToArray();
+            //files = files.Concat(root.GetFiles("*_purchaseNotice_*.xml", SearchOption.AllDirectories)).ToArray();
+
+            FileInfo[] files = root.GetFiles("*_purchaseNotice_*.xml", SearchOption.AllDirectories).ToArray();
+
+            foreach (FileInfo file in files)
             {
-
-                foreach (DirectoryInfo busDir in busDirs)
+                Type t = GetClassByFileName(file.Name);
+                //if (t == typeof(PurchaseContract))
+                //{
+                //    Logger.Info("parse file" + file.FullName);
+                //    try
+                //    {
+                //        DBModel.PurchaseContractData data = new DBModel.PurchaseContractData(file.FullName);
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        Logger.Info("path to file" + file.FullName);
+                //        Logger.Error(ex);
+                //    }
+                //}
+                //else 
+                if (t == typeof(PurchaseNotice))
                 {
-                    DirectoryInfo[] dirs = busDir.GetDirectories();
-
-                    foreach (DirectoryInfo dir in dirs)
+                    Logger.Info("parse file" + file.FullName);
+                    try
                     {
-                        FileInfo[] files = dir.GetFiles("*.xml");
-
-                        foreach (FileInfo file in files)
-                        {
-                            Type t = GetClassByFileName(file.Name);
-                            if (t == typeof(PurchaseContract))
-                            {
-                                try {
-                                    PurchaseContract resREj = Out1.ParseXML<PurchaseContract>(file.FullName);
-                                    db.PurchaseContracts.Add(resREj);
-                                }
-                                catch {
-                                }
-                            }
-
-                            //db.OrderClauses.a
-                            //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
-                        }
+                        DBModel.PurchaseNoticeData data2 = new DBModel.PurchaseNoticeData(file.FullName);
                     }
-                    break;
+                    catch (Exception ex)
+                    {
+                        Logger.Info("path to file" + file.FullName);
+                        Logger.Error(ex);
+                    }
                 }
-                db.SaveChanges();
+
+                //db.OrderClauses.a
+                //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
+                //    }
+                //}
+                //break;
+                //}
+                //db.SaveChanges();
             }
         }
+        //public static void ParseAllXML()
+        //{
+        //    List<string> result = new List<string>();
+        //    DirectoryInfo root = new DirectoryInfo(extractFolder);
+        //    DirectoryInfo[] busDirs = root.GetDirectories();
+
+        //    //using (var db = new DirtyContext())
+        //    //{
+
+        //    foreach (DirectoryInfo busDir in busDirs)
+        //    {
+        //        DirectoryInfo[] dirs = busDir.GetDirectories();
+
+        //        foreach (DirectoryInfo dir in dirs)
+        //        {
+        //            FileInfo[] files = dir.GetFiles("*.xml");
+
+        //            foreach (FileInfo file in files)
+        //            {
+        //                Type t = GetClassByFileName(file.Name);
+        //                if (t == typeof(PurchaseContract))
+        //                {
+        //                    try
+        //                    {
+        //                        DBModel.PurchaseContractData data = new DBModel.PurchaseContractData(file.FullName);
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Logger.Info("path to file" + file.FullName);
+        //                        Logger.Error(ex);
+        //                    }
+        //                }
+        //                else if (t == typeof(PurchaseContract))
+        //                {
+        //                    try
+        //                    {
+        //                        DBModel.PurchaseNoticeData data2 = new DBModel.PurchaseNoticeData(file.FullName);
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Logger.Info("path to file" + file.FullName);
+        //                        Logger.Error(ex);
+        //                    }
+        //                }
+
+        //                //db.OrderClauses.a
+        //                //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
+        //            }
+        //        }
+        //        //break;
+        //        //}
+        //        //db.SaveChanges();
+        //    }
+        //}
+
+
+        //public static void ParseAllXML()
+        //{
+        //    List<string> result = new List<string>();
+        //    DirectoryInfo root = new DirectoryInfo(extractFolder);
+        //    DirectoryInfo[] busDirs = root.GetDirectories();
+
+        //    //using (var db = new DirtyContext())
+        //    //{
+
+        //    foreach (DirectoryInfo busDir in busDirs)
+        //    {
+        //        DirectoryInfo[] dirs = busDir.GetDirectories();
+
+        //        foreach (DirectoryInfo dir in dirs)
+        //        {
+        //            FileInfo[] files = dir.GetFiles("*.xml");
+
+        //            foreach (FileInfo file in files)
+        //            {
+        //                Type t = GetClassByFileName(file.Name);
+        //                if (t == typeof(PurchaseContract))
+        //                {
+        //                    try
+        //                    {
+        //                        DBModel.PurchaseContractData data = new DBModel.PurchaseContractData(file.FullName);
+        //                    }
+        //                    catch (Exception ex)
+        //                    {
+        //                        Logger.Info("path to file" + file.FullName);
+        //                        Logger.Error(ex);
+        //                    }
+        //                }
+        //                else if (t == typeof(PurchaseContract))
+        //                {
+        //                    try
+        //                    {
+        //                        DBModel.PurchaseNoticeData data2 = new DBModel.PurchaseNoticeData(file.FullName);
+        //                    }
+        //                    catch(Exception ex)
+        //                    {
+        //                        Logger.Info("path to file" + file.FullName);
+        //                        Logger.Error(ex);
+        //                    }
+        //                }
+
+        //                //db.OrderClauses.a
+        //                //Logger.Log(file.Name + " has class name for " + t.FullName, Logger.LogType.Processed);
+        //            }
+        //        }
+        //        //break;
+        //        //}
+        //        //db.SaveChanges();
+        //    }
+        //}
 
 
 

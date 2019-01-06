@@ -15,15 +15,43 @@ namespace DBModel
         public Currency Currency { get; set; }
         public string InitialSum { get; set; }
         public string DeliveryPlace { get; set; }
+        public Nullable<bool> ForSmallOrMiddle { get; set; }
+        public Nullable<bool> ExcludePurchaseFromPlan { get; set; }
+        public Nullable<bool> SubcontractorsRequirement { get; set; }
+        public Nullable<bool> IgnoredPurchase { get; set; }
+        public Nullable<bool> Centralized { get; set; }
+
+        public string DeliveryPlaceIndication { get; set; }
+        public Nullable<bool> JointLot { get; set; }
+        public LotItems LotItems { get; set; } //TODO: refactor
 
         public Lot(XElement node)
         {
             this.Guid = node.GetGuid("guid");
             this.OrdinalNumber = node.GetString("OrdinalNumber");
             this.Subject = node.GetString("Subject");
-            this.Currency = new Currency(node.GetDescendant("Currency"));//node.GetGuid("Currency");
+            if (node.GetDescendant("Currency") != null)
+                this.Currency = new Currency(node.GetDescendant("Currency"));//node.GetGuid("Currency");
             this.InitialSum = node.GetString("InitialSum");
             this.DeliveryPlace = node.GetString("DeliveryPlace");
+
+            if (node.GetDescendant("ForSmallOrMiddle") != null)
+                ForSmallOrMiddle = node.GetBool("ForSmallOrMiddle");
+            if (node.GetDescendant("ExcludePurchaseFromPlan") != null)
+                ExcludePurchaseFromPlan = node.GetBool("ExcludePurchaseFromPlan");
+            if (node.GetDescendant("SubcontractorsRequirement") != null)
+                SubcontractorsRequirement = node.GetBool("SubcontractorsRequirement");
+            if (node.GetDescendant("IgnoredPurchase") != null)
+                IgnoredPurchase = node.GetBool("IgnoredPurchase");
+            if (node.GetDescendant("Centralized") != null)
+                Centralized = node.GetBool("Centralized");
+
+            DeliveryPlaceIndication = node.GetString("DeliveryPlaceIndication");
+            if (node.GetDescendant("JointLot") != null)
+                JointLot = node.GetBool("JointLot");
+
+            if (node.GetDescendant("lotItems") != null)
+                LotItems = new LotItems(node.GetDescendant("lotItems"));
         }
     }
 

@@ -16,8 +16,10 @@ namespace DBModel
 
         public DocumentationDelivery(XElement node)
         {
-            DeliveryStartDateTime = node.GetDateTime("DeliveryStartDateTime");
-            DeliveryEndDateTime = node.GetDateTime("DeliveryEndDateTime");
+            if (node.GetDescendant("DeliveryStartDateTime") != null)
+                DeliveryStartDateTime = node.GetDateTime("DeliveryStartDateTime");
+            if (node.GetDescendant("DeliveryEndDateTime") != null)
+                DeliveryEndDateTime = node.GetDateTime("DeliveryEndDateTime");
             Place = node.GetString("Place");
             Procedure = node.GetString("Procedure");
         }

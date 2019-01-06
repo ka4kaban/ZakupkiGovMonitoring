@@ -12,18 +12,23 @@ namespace DBModel
         public string Name { get; set; }
         public string Url { get; set; }
         public int ElectronicPlaceId { get; set; }
-        public DateTime PurchaseDateTime { get; set; }
+        public Nullable<DateTime> PurchaseDateTime { get; set; }
         public string ExaminationPlace { get; set; }
-        public DateTime ExaminationDateTime { get; set; }
+        public Nullable<DateTime> ExaminationDateTime { get; set; }
 
         public ElectronicPlaceInfo(XElement node)
         {
+            if (node == null) return;
             Name = node.GetString("name");
             Url = node.GetString("Url");
             ElectronicPlaceId = node.GetInt("ElectronicPlaceId");
-            PurchaseDateTime = node.GetDateTime("PurchaseDateTime");
-            ExaminationPlace = node.GetString("ExaminationPlace");
-            ExaminationDateTime = node.GetDateTime("ExaminationDateTime");
+
+            if (node.GetDescendant("PurchaseDateTime") != null)
+                PurchaseDateTime = node.GetDateTime("PurchaseDateTime");
+            if (node.GetDescendant("ExaminationPlace") != null)
+                ExaminationPlace = node.GetString("ExaminationPlace");
+            if (node.GetDescendant("ExaminationDateTime") != null)
+                ExaminationDateTime = node.GetDateTime("ExaminationDateTime");
         }
     }
 }

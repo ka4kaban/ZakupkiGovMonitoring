@@ -17,7 +17,7 @@ namespace DBModel
         public PurchaseContractLot Lot { get; set; }
         public Currency Currency { get; set; }
         public string Sum { get; set; }
-        public DateTime FulfillmentDate { get; set; }
+        public string FulfillmentDate { get; set; }
         public PurchaseInfo PurchaseInfo { get; set; }
         public Supplier Supplier { get; set; }
         public CustomerInfo CustomerInfo { get; set; }
@@ -30,40 +30,58 @@ namespace DBModel
         public DateTime PublicationDateTime { get; set; }
         public string Status { get; set; }
         public string Version { get; set; }
-
+        XElement Body { get; set; }
 
         public ContractItemCollection ContractItemCollection { get; set; }
 
-        public PurchaseContractData(XElement body)
+        //public PurchaseContractData(XElement body): this()
+        //{
+        //    Body = body;
+        //}
+
+        public void ParseXML()
         {
             //XElement purchaseContractData = body.GetDescendant("purchaseContractData"); //?
 
-            this.Guid = body.GetGuid("guid");
-            this.RegistrationNumber = body.GetString("RegistrationNumber");
-            this.UrlOOS = body.GetString("UrlOOS");
-            this.CreateDateTime = body.GetDateTime("CreateDateTime");
-            this.ContractCreateDate = body.GetDateTime("ContractCreateDate");
+            this.Guid = Body.GetGuid("guid");
+            this.RegistrationNumber = Body.GetString("RegistrationNumber");
+            this.UrlOOS = Body.GetString("UrlOOS");
+            this.CreateDateTime = Body.GetDateTime("CreateDateTime");
+            this.ContractCreateDate = Body.GetDateTime("ContractCreateDate");
 
-            Lot = new PurchaseContractLot(body.GetDescendant("lot"));
-            Currency = new Currency(body.GetDescendant("Currency"));
+            Lot = new PurchaseContractLot(Body.GetDescendant("lot"));
+            if (Body.GetDescendant("Currency") != null)
+                Currency = new Currency(Body.GetDescendant("Currency"));
 
-            Sum = body.GetString("sum");
-            FulfillmentDate = body.GetDateTime("FulfillmentDate");
-            PurchaseInfo = new PurchaseInfo(body.GetDescendant("PurchaseInfo"));
-            Supplier = new Supplier(body.GetDescendant("Supplier"));
-            CustomerInfo = new CustomerInfo(body.GetDescendant("CustomerInfo"));
-            Placer = new Placer(body.GetDescendant("Placer"));
-            DeliveryPlace = new DeliveryPlace(body.GetDescendant("DeliveryPlace"));
+            Sum = Body.GetString("sum");
+            FulfillmentDate = Body.GetString("FulfillmentDate");
+            PurchaseInfo = new PurchaseInfo(Body.GetDescendant("PurchaseInfo"));
+            if (Body.GetDescendant("Supplier") != null)
+                Supplier = new Supplier(Body.GetDescendant("Supplier"));
+            if (Body.GetDescendant("CustomerInfo") != null)
+                CustomerInfo = new CustomerInfo(Body.GetDescendant("CustomerInfo"));
+            if (Body.GetDescendant("Placer") != null)
+                Placer = new Placer(Body.GetDescendant("Placer"));
+            if(Body.GetDescendant("DeliveryPlace") != null)
+                DeliveryPlace = new DeliveryPlace(Body.GetDescendant("DeliveryPlace"));
 
-            DeliveryPlaceIndication = body.GetString("DeliveryPlaceIndication");
+            DeliveryPlaceIndication = Body.GetString("DeliveryPlaceIndication");
 
-            ContractItemCollection = new ContractItemCollection(body.GetDescendant("ContractItems"));
-            Type = body.GetString("Type");
-            Name = ((XElement)body.GetDescendant("PublicationDateTime").PreviousNode).Value.ToString();
-            //Name = body.GetString("name");
-            PublicationDateTime = body.GetDateTime("PublicationDateTime");
-            Status = body.GetString("Status");
-            Version = body.GetString("Version");
+            ContractItemCollection = new ContractItemCollection(Body.GetDescendant("ContractItems"));
+            Type = Body.GetString("Type");
+            Name = ((XElement)Body.GetDescendant("PublicationDateTime").PreviousNode).Value.ToString();
+            //Name = Body.GetString("name");
+            PublicationDateTime = Body.GetDateTime("PublicationDateTime");
+            Status = Body.GetString("Status");
+            Version = Body.GetString("Version");
+        }
+
+        public PurchaseContractData(string path)
+        {
+            XDocument xml = XDocument.Load(path);
+            Body = (XElement)xml.Root.FirstNode.NextNode;
+
+            ParseXML();
         }
     }
 

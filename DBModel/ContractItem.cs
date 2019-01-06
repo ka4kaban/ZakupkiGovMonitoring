@@ -17,9 +17,12 @@ namespace DBModel
 
         public ContractItem(XElement node)
         {
-            OKDP = new OKDP(node.GetDescendant("OKDP"));
-            OKVED = new OKVED(node.GetDescendant("OKVED"));
-            OKEI = new OKEI(node.GetDescendant("OKEI"));
+            if(node.GetDescendant("OKDP") != null)
+                OKDP = new OKDP(node.GetDescendant("OKDP"));
+            if (node.GetDescendant("OKVED") != null)
+                OKVED = new OKVED(node.GetDescendant("OKVED"));
+            if (node.GetDescendant("OKEI") != null)
+                OKEI = new OKEI(node.GetDescendant("OKEI"));
 
             QTY = node.GetString("QTY");
             OrdinalNumber = node.GetString("OrdinalNumber");
